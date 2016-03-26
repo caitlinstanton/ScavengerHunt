@@ -30,4 +30,12 @@ class ItemsManager {
         }
     }
     
+    init() {
+        if let theArchivePath = archivePath() {
+            if NSFileManager.defaultManager().fileExistsAtPath(theArchivePath) {
+                itemsList = NSKeyedUnarchiver.unarchiveObjectWithFile(theArchivePath) as! [ScavengerHuntItem]
+            }
+        }
+    }
+    
 }
